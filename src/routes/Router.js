@@ -1,6 +1,7 @@
 import { lazy } from "react";
 // import { Navigate } from "react-router-dom";
 
+
 /****Layouts*****/
 const FullLayout = lazy(() => import("../layouts/FullLayout.js"));
 
@@ -18,6 +19,7 @@ const Starter = lazy(() => import("../views/Starter.js"));
 // const Breadcrumbs = lazy(() => import("../views/ui/Breadcrumbs"));
 const ProductManu = lazy(() => import('../viewscafe/productManu'))
 const Product = lazy(() => import("../viewscafe/product/Product.js"))
+
 /*****Routes******/
 
 const ThemeRoutes = [
@@ -44,6 +46,11 @@ const ThemeRoutes = [
                 exact: true,
                 element: <Starter />
             },
+            //  {
+            //   path: "/employee",
+            //   exact: true, 
+            //   element: <Employee />
+            //  },
             //   { path: "/about", 
             //   exact: true, 
             //   element: <About /> 
