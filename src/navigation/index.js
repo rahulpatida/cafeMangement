@@ -1,17 +1,23 @@
 const navigation = [
-     
-     {
-        
-       title: "Dashboard",
-       href: "/starter",
-       icon: "bi bi-speedometer2",
-     },
-     {
-        header:'ProductManu'  ,
+    {
+
+        title: "Dashboard",
+        href: "/starter",
+        icon: "bi bi-speedometer2",
+    },
+    {
+        // header: 'Product',
+        title: "product",
+        href: "/product",
+        icon: "bi bi-hdd-stack",
+    },
+    {
+        // header: 'ProductManu',
         title: "Manu",
         href: "/manu",
         icon: "bi bi-patch-check",
-      },
+
+    },
     // {
     //   title: "Alert",
     //   href: "/alerts",
@@ -57,6 +63,6 @@ const navigation = [
     //   href: "/about",
     //   icon: "bi bi-people",
     // },
-  ];
+];
 
-  export default navigation
+export default navigation
