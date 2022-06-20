@@ -12,6 +12,12 @@ const navigation = [
         href: "/manu",
         icon: "bi bi-patch-check",
       },
+      // {
+      //   header:'Employee'  ,
+      //   title: "Employee",
+      //   href: "/employee",
+      //   icon: "bi bi-patch-check",
+      // },
     // {
     //   title: "Alert",
     //   href: "/alerts",

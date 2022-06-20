@@ -8,13 +8,16 @@ import { HashRouter } from "react-router-dom";
 import Loader from "./layouts/loader/Loader";
 import { Provider } from "react-redux";
 import store from './redux/store'
+import { AbilityContext } from "./utility/context/Can";
 ReactDOM.render(
   <Provider store={store}>
-  <Suspense fallback={<Loader />}>
-    <HashRouter>
-      <App />
-    </HashRouter>
-  </Suspense>
+    <AbilityContext.Provider value={AbilityContext}>
+      <Suspense fallback={<Loader />}>
+        <HashRouter>
+          <App />
+        </HashRouter>
+      </Suspense>
+    </AbilityContext.Provider>
   </Provider>,
 
   document.getElementById("root")
