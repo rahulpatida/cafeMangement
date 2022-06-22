@@ -49,13 +49,13 @@ const SideModal = ({ loading = false, open, disableSave = false, handleModal, ch
             </ModalBody>
             <ModalFooter>
                 <ButtonGroup className="btn-block">
-                    <Button.Ripple color='secondary' onClick={handleModal} outline>
+                    <Button color='secondary' onClick={handleModal} outline>
                         {(close)}
-                    </Button.Ripple>
+                    </Button>
                     {/* <LoadingButton disabled={disableSave} loading={loading} color='primary' onClick={handleSave}>
                         {(done)}
                     </LoadingButton> */}
-                  
+
                 </ButtonGroup>
             </ModalFooter>
         </Modal>

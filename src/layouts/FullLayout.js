@@ -1,10 +1,11 @@
 import { Outlet } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import Header from "./Header";
+import Footer from "./footer/Footer";
 // import Header from "../views/header/Header";
 import { Container, Row, Col } from "reactstrap";
 const FullLayout = () => {
-    return (
+    return (<>
         <main>
             <Row>
                 <div className="pageWrapper d-lg-flex">
@@ -32,9 +33,10 @@ const FullLayout = () => {
                 </div>
                 {/* <h1>header</h1> */}
             </Row>
+            <Footer />
         </main>
 
-    );
+    </>);
 };
 
 export default FullLayout;

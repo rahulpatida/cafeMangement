@@ -19,7 +19,7 @@ const Starter = lazy(() => import("../views/Starter.js"));
 // const Breadcrumbs = lazy(() => import("../views/ui/Breadcrumbs"));
 const ProductManu = lazy(() => import('../viewscafe/productManu'))
 const Product = lazy(() => import("../viewscafe/product/Product.js"))
-
+const ProductForm = lazy(() => import("../viewscafe/product/ProductForm"))
 /*****Routes******/
 
 const ThemeRoutes = [
@@ -35,6 +35,10 @@ const ThemeRoutes = [
             {
                 path: "/product",
                 element: <Product />
+            },
+            {
+                path: "/product/create",
+                element: <ProductForm />
             },
 
             //   { 

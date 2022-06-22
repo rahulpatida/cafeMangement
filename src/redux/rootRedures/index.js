@@ -1,9 +1,10 @@
 
+import product from "../reducers/product";
 
-
-const rootReducers={
+const rootReducers = {
+    product,
 
 }
- 
+
 
 export default rootReducers;
