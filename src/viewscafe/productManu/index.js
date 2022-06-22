@@ -1,11 +1,11 @@
 import React from 'react'
 
-const  ProductManu = () => {
+const ProductManu = () => {
   return (
-   <>
-   <h1>Product</h1>
-   </>
+    <>
+      <h1>Productsssssssssssssssssssssss</h1>
+    </>
   )
 }
 
-export default  ProductManu
+export default ProductManu

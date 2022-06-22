@@ -16,7 +16,9 @@ const Starter = lazy(() => import("../views/Starter.js"));
 // const Tables = lazy(() => import("../views/ui/Tables"));
 // const Forms = lazy(() => import("../views/ui/Forms"));
 // const Breadcrumbs = lazy(() => import("../views/ui/Breadcrumbs"));
- const ProductManu= lazy(()=>import('../viewscafe/productManu'))
+const ProductManu = lazy(() => import('../viewscafe/productManu'))
+const Employeesview = lazy(() => import('../viewscafe/employees/Employeesview'))
+
 /*****Routes******/
 
 const ThemeRoutes = [
@@ -25,55 +27,61 @@ const ThemeRoutes = [
     element: <FullLayout />,
     children: [
 
-      { 
-             path: "/manu",
-             element: <ProductManu  /> 
+      {
+        path: "/manu",
+        element: <ProductManu />
       },
-        
-    //   { 
-    //     path: "/",
-    //     element: <Navigate to="/starter"/> 
-    //   },
-     {
+
+      //   { 
+      //     path: "/",
+      //     element: <Navigate to="/starter"/> 
+      //   },
+      {
         path: "/starter",
-        exact: true, 
+        exact: true,
         element: <Starter />
-       },
-    //   { path: "/about", 
-    //   exact: true, 
-    //   element: <About /> 
-    // },
-    //   { path: "/alerts", 
-    //   exact: true,
-    //    element: <Alerts />
-    //    },
-    //   { path: "/badges", 
-    //   exact: true, 
-    //   element: <Badges /> 
-    // },
-    //   { path: "/buttons", 
-    //   exact: true,
-    //    element: <Buttons /> 
-    //   },
-    //   { path: "/cards",
-    //    exact: true,
-    //     element: <Cards /> 
-    //   },
-    //   { path: "/grid", 
-    //   exact: true, 
-    //   element: <Grid /> 
-    // },
-    //   { path: "/table",
-    //   exact: true, 
-    //   element: <Tables />
-    //  },
-    //   { path: "/forms",
-    //    exact: true,
-    //     element: <Forms />
-    //    },
-    //   { path: "/breadcrumbs",
-    //    exact: true,
-    //     element: <Breadcrumbs /> },
+      },
+
+      {
+        path: "/employees",
+        exact: true,
+        element: <Employeesview />
+      },
+      //   { path: "/about", 
+      //   exact: true, 
+      //   element: <About /> 
+      // },
+      //   { path: "/alerts", 
+      //   exact: true,
+      //    element: <Alerts />
+      //    },
+      //   { path: "/badges", 
+      //   exact: true, 
+      //   element: <Badges /> 
+      // },
+      //   { path: "/buttons", 
+      //   exact: true,
+      //    element: <Buttons /> 
+      //   },
+      //   { path: "/cards",
+      //    exact: true,
+      //     element: <Cards /> 
+      //   },
+      //   { path: "/grid", 
+      //   exact: true, 
+      //   element: <Grid /> 
+      // },
+      //   { path: "/table",
+      //   exact: true, 
+      //   element: <Tables />
+      //  },
+      //   { path: "/forms",
+      //    exact: true,
+      //     element: <Forms />
+      //    },
+      //   { path: "/breadcrumbs",
+      //    exact: true,
+      //     element: <Breadcrumbs /> },
     ],
   },
 ];

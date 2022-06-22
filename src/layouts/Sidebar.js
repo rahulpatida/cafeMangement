@@ -14,7 +14,7 @@ const Sidebar = () => {
   return (
     <div className="p-3 ">
       <div className="d-flex align-items-center">
-         <Logo /> 
+        <Logo />
         <Button
           close
           size="sm"
@@ -25,7 +25,7 @@ const Sidebar = () => {
       <div className="pt-4 mt-2">
         <Nav vertical className="sidebarNav" >
           {navigation.map((navi, index) => (
-           
+
             <NavItem key={index} >
               <h4 className="justify-content-center">{navi.header}</h4>
               <Link
