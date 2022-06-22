@@ -1,6 +1,5 @@
 import React from 'react'
 import 'bootstrap';
-import 
 import navigation from "../../navigation/index";
 
 const Employeesview = () => {
