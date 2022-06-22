@@ -20,12 +20,12 @@ const FullLayout = () => {
           </Col>
           {/********Content Area**********/}
           <Col md='10'>
-            <div className="contentArea  " >
+            <div className="contentArea p-1 "  >
               {/* <div className="contentArea mt-5"> */}
               {/********header**********/}
               <Header />
               {/********Middle Content**********/}
-              <Container className="p-3 wrapper" >
+              <Container className=" wrapper mt-5" >
                 {/* <Header /> */}
                 <Outlet />
               </Container>
