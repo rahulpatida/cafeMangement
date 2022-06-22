@@ -27,7 +27,7 @@ const Sidebar = () => {
           {navigation.map((navi, index) => (
 
             <NavItem key={index} >
-              <h4 className="justify-content-center">{navi.header}</h4>
+              <h5 className="text-start">{navi.header}</h5>
               <Link
                 to={navi.href}
                 className={

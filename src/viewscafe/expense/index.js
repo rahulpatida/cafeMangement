@@ -1,45 +1,3 @@
-// import React, { Component, useState } from 'react'
-// import DropDownMenu from '../../component/dropdownManu'
-// import FormGroupCustom from '../../component/fromGropCustoms'
-// import TableGrid from '../../component/tableGrid'
-// import { useForm } from 'react-hook-form'
-// import { Button } from 'reactstrap'
-// import CenteredModal from '../../component/CenteredModal'
-// import ModalManu from './ModalManu'
-// // import SideModal from '../../component/sideModal/sideModal'
-// const ProductManu = () => {
-
-//   const { formState: { errors }, handleSubmit, control, reset, setValue, watch, getValues } = useForm()
-
-//   // const[open, setOpen]=useState(false)
-//   // const  handleClose=()=>setOpen(false)
-//   // const handershow= ()=>{
-//   //   setOpen(!open)
-//   // }
-//   return (
-//     <>
-//       <h1>Product</h1>
-//       <TableGrid />
-//       <DropDownMenu />
-
-//       <FormGroupCustom
-//         label={"title"}
-//         name={"title"}
-//         type={"checkbox"}
-//         errors={errors}
-//         //  values={companyData}
-//         className="mb-2"
-//         control={control}
-//         rules={{ required: true }} />
-
-
-//     </>
-
-
-//   )
-// }
-
-// export default ProductManu
 import { useEffect, useState } from 'react'
 import DataTable from 'react-data-table-component'
 import { ChevronDown, Eye, EyeOff, Plus, RefreshCcw, Sliders } from 'react-feather'
@@ -51,106 +9,83 @@ import { formatDateTimeByFormat } from '../../utility/Utils'
 import Shimmer from '../../component/shimmers/Shimmer'
 import BsTooltip from '../../component/tooltip'
 import Show from '../../utility/Show'
-import ModalManu from './ModalManu'
+import ExpenseModal from './ExpenseModal'
+
+import DropDownMenu from '../../component/dropdownManu'
 
 
 
 
+const Expense = () => {
 
-const ProductManu = () => {
+
+
+
     const [loading, setLoading] = useState(false)
 
-    const [rowsPerPage, setRowsPerPage] = useState("2")
-    const [edit, setedit] = useState([])
+    // const [rowsPerPage, setRowsPerPage] = useState("2")
+     const [edit, setedit ]=useState([])
 
-    const [Open, setOpen] = useState(false)
-    const handerClose = () => setOpen(false)
-    const handerOpen = () => setOpen(true)
-    const handlerShow = () => {
-        setOpen(!Open)
-    }
+   const[Open, setOpen]=useState(false)
+   const handerClose=()=>setOpen(false)
+   const handerOpen=()=>setOpen(true)
+   const  handlerShow =()=>{
+         setOpen(!Open)
+   }
 
 
-    const edithandler = (row) => {
-        setedit(row.data)
-
-    }
+   const edithandler=(row)=>{
+           setedit(row.data)
+           
+   }
     const data = [
-        {
-            id: 1,
-            product: 'samosa',
-            price: '20',
-            description: 'this is best samosa'
+        {  
+            id:1,
+           description:'this is best samosa',
+            income: '2000',
+            expense: '500',
+            total:'1000000'
 
         },
         {
-            id: 2,
-            product: 'coeffi',
-            price: '20',
-            description: 'this is best samosa'
+            id:2,
+            description:'this is best samosa',
+            income: '2000',
+            expense: '500',
+            total:'1000000'
 
         },
         {
-            id: 3,
-            product: 'milk',
-            price: '20',
-            description: 'this is best samosa'
+            id:3,
+            description:'this is best samosa',
+            income: '2000',
+            expense: '500',
+            total:'1000000'
 
         },
         {
-            id: 4,
-            product: 'samosa',
-            price: '20',
-            description: 'this is best samosa'
+            id:4,
+            description:'this is best samosa',
+            income: '2000',
+            expense: '500',
+            total:'1000000'
 
         },
-        {
-            id: 5,
-            product: 'coeffi',
-            price: '20',
-            description: 'this is best samosa'
-
-        },
-        {
-            id: 6,
-            product: 'milk',
-            price: '20',
-            description: 'this is best samosa'
-
-        }
+       
     ]
 
 
 
     const ManuColumn = [
-
+       
         {
-
+            
             name: ("#"),
             selector: (row, i) => (row.id ? (i + 1) : null),
             maxWidth: "10px"
 
         },
 
-
-        {
-            name: "product",
-            selector: 'product',
-            sortable: true,
-            minWidth: '150px'
-        },
-        {
-            name: "price",
-            selector: 'price',
-            sortable: true,
-            minWidth: '150px'
-        },
-        {
-            name: "description",
-            selector: 'description',
-            sortable: true,
-            minWidth: '150px'
-        },
 
         {
             name: ("date"),
@@ -160,6 +95,32 @@ const ProductManu = () => {
             sortable: true,
             minWidth: '150px'
         },
+       
+        {
+            name: "description",
+            selector: 'description',
+            sortable: true,
+            minWidth: '150px'
+        },
+        {
+            name: "Investment",
+            selector: 'Investment',
+            sortable: true,
+            minWidth: '150px'
+        },
+        {
+            name: "Expense",
+            selector: 'expense',
+            sortable: true,
+            minWidth: '150px'
+        },
+        {
+            name: "Saving",
+            selector: 'saving',
+            sortable: true,
+            minWidth: '150px'
+        },
+       
         {
             name: ("actions"),
             allowOverflow: true,
@@ -167,24 +128,30 @@ const ProductManu = () => {
             cell: row => {
 
                 return (
-                    <ButtonGroup >
-                        {/* <Hide IF={row?.file === null}> */}
-                        {/* {row?.data !== null ? <BsTooltip className="ms-1" Tag={"a"} role={"button"} target={"_blank"} href={row?.file} title={("View")}>
-                            <Eye size="18" />
-                        </BsTooltip> : <BsTooltip className="ms-1" Tag={"a"} role={"button"} title={("no-View")}>
-                            <EyeOff size="18" />
-                        </BsTooltip>} */}
-                        {/* </Hide> */}
-                        <UncontrolledTooltip target="View-Manu">View-Manu</UncontrolledTooltip>
-                        <Button id='View-Manu'
-
-                            onClick={edithandler(row)}
-
-                        >
-
-                            <Eye size={18} />
-                        </Button>
-                    </ButtonGroup>
+                    // <ButtonGroup >
+                    //     {/* <Hide IF={row?.file === null}> */}
+                    //     {/* {row?.data !== null ? <BsTooltip className="ms-1" Tag={"a"} role={"button"} target={"_blank"} href={row?.file} title={("View")}>
+                    //         <Eye size="18" />
+                    //     </BsTooltip> : <BsTooltip className="ms-1" Tag={"a"} role={"button"} title={("no-View")}>
+                    //         <EyeOff size="18" />
+                    //     </BsTooltip>} */}
+                    //     {/* </Hide> */}
+                    //     <UncontrolledTooltip target="View-Manu">View-Manu</UncontrolledTooltip>
+                    //         <Button id='View-Manu'
+                            
+                    //         //  onClick={edithandler(row)}
+                            
+                    //         >
+                           
+                    //             <Eye size={18} />
+                    //         </Button>
+                    // </ButtonGroup>
+                    <DropDownMenu  
+                    
+                    
+                    
+                    
+                    />
                 )
             }
         }
@@ -194,12 +161,12 @@ const ProductManu = () => {
         //   const count = Math.ceil(cashier?.total / cashier?.per_page)
         return (
             <ReactPaginate
-                initialPage={1}
+                 initialPage={1}
                 disableInitialCallback
                 previousLabel={''}
                 nextLabel={''}
                 breakLabel='...'
-                pageCount={5}
+                  pageCount={5}
                 activeClassName='active'
                 //   onPageChange={page => handlePagination(page)}
                 pageClassName={'page-item'}
@@ -249,21 +216,21 @@ const ProductManu = () => {
         <>
 
             {/* <Card> */}
-            <ModalManu Open={Open} handerClose={handerClose} handerOpen={handerOpen} />
+              <ExpenseModal Open={Open} handerClose={handerClose} handerOpen={handerOpen} />  
             <CardHeader className='border-bottom inline  '>
                 <Row>
                     <Col md='11' xs={8}>
-                        <CardTitle className='text-primary' tag='h4'>Product Manu</CardTitle>
+                        <CardTitle className='text-primary' tag='h4'>expense</CardTitle>
 
                     </Col>
                     <Col md='1' xs={4}>
                         <ButtonGroup>
                             <UncontrolledTooltip target="create-button">create-new</UncontrolledTooltip>
                             <Button id='create-button'
-
-                                onClick={handlerShow}
+                            
+                            onClick={handlerShow}
                             >
-
+                           
                                 <Plus size={18} />
                             </Button>
                             <UncontrolledTooltip target="reload">create-new</UncontrolledTooltip>
@@ -313,5 +280,4 @@ const ProductManu = () => {
 }
 
 
-export default ProductManu
-
+export default Expense

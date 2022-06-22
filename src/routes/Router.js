@@ -19,6 +19,9 @@ const Starter = lazy(() => import("../views/Starter.js"));
 const ProductManu = lazy(() => import('../viewscafe/productManu'))
 const Employeesview = lazy(() => import('../viewscafe/employees/Employeesview'))
 
+
+
+const Expense = lazy(() => import('../viewscafe/expense'))
 /*****Routes******/
 
 const ThemeRoutes = [
@@ -32,6 +35,10 @@ const ThemeRoutes = [
         element: <ProductManu />
       },
 
+      {
+        path: "/transactions",
+        element: <Expense />
+      },
       //   { 
       //     path: "/",
       //     element: <Navigate to="/starter"/> 
@@ -47,6 +54,11 @@ const ThemeRoutes = [
         exact: true,
         element: <Employeesview />
       },
+      //  {
+      //   path: "/employee",
+      //   exact: true, 
+      //   element: <Employee />
+      //  },
       //   { path: "/about", 
       //   exact: true, 
       //   element: <About /> 
