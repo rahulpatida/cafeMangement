@@ -6,10 +6,10 @@ import navigation from "../navigation";
 
 
 const Sidebar = () => {
-  const showMobilemenu = () => {
-    document.getElementById("sidebarArea").classList.toggle("showSidebar");
-  };
-  let location = useLocation();
+    const showMobilemenu = () => {
+        document.getElementById("sidebarArea").classList.toggle("showSidebar");
+    };
+    let location = useLocation();
 
   return (
     <div className="p-3 ">

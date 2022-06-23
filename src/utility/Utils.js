@@ -82,8 +82,11 @@ export const makeSelectValues = (option = [], value = [], multi = false, matchWi
     }
 
 }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> dbe4b39980b3a4918eff0c3d4f24b078d78fb00b
 export const createSelectOptions = (array, label, value = null) => {
     const data = []
     array.forEach((option) => {
@@ -130,6 +133,7 @@ export const createAsyncSelectOptions = (res, page, label, value, setOptions = (
             hasMore: false
         }
     }
+<<<<<<< HEAD
 }
 
 
@@ -168,4 +172,6 @@ export const calculate=(price, Qty)=>{
         else{
             return price*Qty
         }
+=======
+>>>>>>> dbe4b39980b3a4918eff0c3d4f24b078d78fb00b
 }

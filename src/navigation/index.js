@@ -31,6 +31,20 @@ const navigation = [
       //   href: "/employee",
       //   icon: "bi bi-patch-check",
       // },
+  
+    {
+        // header: 'Product',
+        title: "product",
+        href: "/product",
+        icon: "bi bi-hdd-stack",
+    },
+  
+    // {
+    //   header:'Employee'  ,
+    //   title: "Employee",
+    //   href: "/employee",
+    //   icon: "bi bi-patch-check",
+    // },
     // {
     //   title: "Alert",
     //   href: "/alerts",
@@ -76,7 +90,7 @@ const navigation = [
     //   href: "/about",
     //   icon: "bi bi-people",
     // },
-  ];
+];
 
  
 
