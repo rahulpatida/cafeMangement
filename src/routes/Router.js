@@ -18,9 +18,6 @@ const Starter = lazy(() => import("../views/Starter.js"));
 // const Breadcrumbs = lazy(() => import("../views/ui/Breadcrumbs"));
 const ProductManu = lazy(() => import('../viewscafe/productManu'))
 const Employeesview = lazy(() => import('../viewscafe/employees/Employeesview'))
-
-
-
 const Expense = lazy(() => import('../viewscafe/expense'))
 /*****Routes******/
 
