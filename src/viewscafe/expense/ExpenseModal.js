@@ -23,7 +23,7 @@ const ExpenseModal = ({ Open, handerClose, handerOpen }) => {
     const test = [
         { Expense: 'Expense' },
         { Saving: 'Saving' },
-        { Investment: 'Invesment' }
+        { Investment: 'Invesme   nt' }
     ]
     return (
         <>

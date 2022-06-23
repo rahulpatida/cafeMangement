@@ -61,61 +61,61 @@ const ProductManu = () => {
     const [loading, setLoading] = useState(false)
 
     const [rowsPerPage, setRowsPerPage] = useState("2")
-    const [edit, setedit ]=useState([])
+    const [edit, setedit] = useState([])
 
-   const[Open, setOpen]=useState(false)
-   const handerClose=()=>setOpen(false)
-   const handerOpen=()=>setOpen(true)
-   const  handlerShow =()=>{
-         setOpen(!Open)
-   }
+    const [Open, setOpen] = useState(false)
+    const handerClose = () => setOpen(false)
+    const handerOpen = () => setOpen(true)
+    const handlerShow = () => {
+        setOpen(!Open)
+    }
 
 
-   const edithandler=(row)=>{
-           setedit(row.data)
-           
-   }
+    const edithandler = (row) => {
+        setedit(row.data)
+
+    }
     const data = [
-        {  
-            id:1,
+        {
+            id: 1,
             product: 'samosa',
             price: '20',
-            description:'this is best samosa'
+            description: 'this is best samosa'
 
         },
         {
-            id:2,
+            id: 2,
             product: 'coeffi',
             price: '20',
-            description:'this is best samosa'
+            description: 'this is best samosa'
 
         },
         {
-            id:3,
+            id: 3,
             product: 'milk',
             price: '20',
-            description:'this is best samosa'
+            description: 'this is best samosa'
 
         },
         {
-            id:4,
+            id: 4,
             product: 'samosa',
             price: '20',
-            description:'this is best samosa'
+            description: 'this is best samosa'
 
         },
         {
-            id:5,
+            id: 5,
             product: 'coeffi',
             price: '20',
-            description:'this is best samosa'
+            description: 'this is best samosa'
 
         },
         {
-            id:6,
+            id: 6,
             product: 'milk',
             price: '20',
-            description:'this is best samosa'
+            description: 'this is best samosa'
 
         }
     ]
@@ -123,9 +123,9 @@ const ProductManu = () => {
 
 
     const ManuColumn = [
-       
+
         {
-            
+
             name: ("#"),
             selector: (row, i) => (row.id ? (i + 1) : null),
             maxWidth: "10px"
@@ -151,7 +151,7 @@ const ProductManu = () => {
             sortable: true,
             minWidth: '150px'
         },
-        
+
         {
             name: ("date"),
             selector: ({ value }) => {
@@ -176,14 +176,14 @@ const ProductManu = () => {
                         </BsTooltip>} */}
                         {/* </Hide> */}
                         <UncontrolledTooltip target="View-Manu">View-Manu</UncontrolledTooltip>
-                            <Button id='View-Manu'
-                            
-                             onClick={edithandler(row)}
-                            
-                            >
-                           
-                                <Eye size={18} />
-                            </Button>
+                        <Button id='View-Manu'
+
+                            onClick={edithandler(row)}
+
+                        >
+
+                            <Eye size={18} />
+                        </Button>
                     </ButtonGroup>
                 )
             }
@@ -194,12 +194,12 @@ const ProductManu = () => {
         //   const count = Math.ceil(cashier?.total / cashier?.per_page)
         return (
             <ReactPaginate
-                 initialPage={1}
+                initialPage={1}
                 disableInitialCallback
                 previousLabel={''}
                 nextLabel={''}
                 breakLabel='...'
-                  pageCount={5}
+                pageCount={5}
                 activeClassName='active'
                 //   onPageChange={page => handlePagination(page)}
                 pageClassName={'page-item'}
@@ -260,10 +260,10 @@ const ProductManu = () => {
                         <ButtonGroup>
                             <UncontrolledTooltip target="create-button">create-new</UncontrolledTooltip>
                             <Button id='create-button'
-                            
-                            onClick={handlerShow}
+
+                                onClick={handlerShow}
                             >
-                           
+
                                 <Plus size={18} />
                             </Button>
                             <UncontrolledTooltip target="reload">create-new</UncontrolledTooltip>
