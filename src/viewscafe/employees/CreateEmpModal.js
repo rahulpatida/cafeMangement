@@ -27,6 +27,7 @@ export default function CreateEmpModal({ open, setopenModal }) {
         reset();
     }
     return (
+        ////////////////////////////////ghfgh
         <div>
             <Modal isOpen={open}
             // centered={true}
