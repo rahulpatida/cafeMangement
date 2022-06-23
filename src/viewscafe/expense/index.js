@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import DataTable from 'react-data-table-component'
-import { ChevronDown, Eye, EyeOff, Plus, RefreshCcw, Sliders } from 'react-feather'
+import { ChevronDown, Edit, Eye, EyeOff, MoreVertical, Plus, RefreshCcw, Sliders, Trash2 } from 'react-feather'
 import { useForm } from 'react-hook-form'
 import ReactPaginate from 'react-paginate'
 import { useHistory } from 'react-router-dom'
@@ -12,6 +12,7 @@ import Show from '../../utility/Show'
 import ExpenseModal from './ExpenseModal'
 
 import DropDownMenu from '../../component/dropdownManu'
+import ConfirmAlert from '../../utility/helpers/ConfirmAlert'
 
 
 
@@ -24,62 +25,67 @@ const Expense = () => {
     const [loading, setLoading] = useState(false)
 
     // const [rowsPerPage, setRowsPerPage] = useState("2")
-     const [edit, setedit ]=useState([])
+    const [edit, setEdit] = useState([])
+    const [deleted, setDeleted] = useState(false)
+    const [failed, setFailed] = useState(false)
+    const [Open, setOpen] = useState(false)
+    const handerClose = () => setOpen(false)
+    const handerOpen = () => setOpen(true)
+    const handlerShow = () => {
+        setOpen(!Open)
+    }
 
-   const[Open, setOpen]=useState(false)
-   const handerClose=()=>setOpen(false)
-   const handerOpen=()=>setOpen(true)
-   const  handlerShow =()=>{
-         setOpen(!Open)
-   }
 
+    const edithandler = (row) => {
+        setEdit(row.data)
 
-   const edithandler=(row)=>{
-           setedit(row.data)
-           
-   }
+    }
     const data = [
-        {  
-            id:1,
-           description:'this is best samosa',
-            income: '2000',
+        {
+            id: 1,
+            description: 'this is best samosa',
+            Investment: '2000',
             expense: '500',
-            total:'1000000'
+            saving: '1000000',
+            category:'tea'
 
         },
         {
-            id:2,
-            description:'this is best samosa',
-            income: '2000',
+            id: 2,
+            description: 'this is best samosa',
+            Investment: '2000',
             expense: '500',
-            total:'1000000'
+            saving: '1000000',
+            category:'petrol'
 
         },
         {
-            id:3,
-            description:'this is best samosa',
-            income: '2000',
+            id: 3,
+            description: 'this is best samosa',
+            
             expense: '500',
-            total:'1000000'
+            category:'coffi'
+        
 
         },
         {
-            id:4,
-            description:'this is best samosa',
-            income: '2000',
+            id: 4,
+            description: 'this is best samosa',
+            Investment: '2000',
             expense: '500',
-            total:'1000000'
+            total: '1000000',
+            category:'transport'
 
         },
-       
+
     ]
 
 
 
     const ManuColumn = [
-       
+
         {
-            
+
             name: ("#"),
             selector: (row, i) => (row.id ? (i + 1) : null),
             maxWidth: "10px"
@@ -95,32 +101,22 @@ const Expense = () => {
             sortable: true,
             minWidth: '150px'
         },
-       
-        {
-            name: "description",
-            selector: 'description',
-            sortable: true,
-            minWidth: '150px'
-        },
-        {
-            name: "Investment",
-            selector: 'Investment',
-            sortable: true,
-            minWidth: '150px'
-        },
+
+         {
+             name: "category",
+             selector: 'category',
+             sortable: true,
+             minWidth: '150px'
+         },
+
         {
             name: "Expense",
             selector: 'expense',
             sortable: true,
             minWidth: '150px'
         },
-        {
-            name: "Saving",
-            selector: 'saving',
-            sortable: true,
-            minWidth: '150px'
-        },
-       
+
+
         {
             name: ("actions"),
             allowOverflow: true,
@@ -138,19 +134,64 @@ const Expense = () => {
                     //     {/* </Hide> */}
                     //     <UncontrolledTooltip target="View-Manu">View-Manu</UncontrolledTooltip>
                     //         <Button id='View-Manu'
-                            
+
                     //         //  onClick={edithandler(row)}
-                            
+
                     //         >
-                           
+
                     //             <Eye size={18} />
                     //         </Button>
                     // </ButtonGroup>
-                    <DropDownMenu  
-                    
-                    
-                    
-                    
+                    <DropDownMenu
+                        tooltip={(`menu`)}
+                        component={
+                            <MoreVertical
+                            // color={colors.primary.main}
+                             size={18} 
+                            />
+                        }
+                        options={[
+                            {
+
+                                icon: <Eye size={14} />,
+                                name: ("view"),
+                                // onClick: () => {
+                                //     setShowViewModal(!showViewModal)
+                                //     setEdit(user)
+                                // }
+                            },
+                            {
+
+                                icon: <Edit size={14} />,
+                                onClick: () => {
+                                    handlerShow()
+                                    setEdit(row)
+                                 },
+                                name: "edit"
+                            },
+                            // {
+
+                            {
+
+                                // IF: Can(Permissions.employeesDelete) && emp?.id !== user?.id,
+                                icon: <Trash2 size={14} />,
+                                name: <ConfirmAlert
+                                    title={("delete-this")}
+                                    color='text-warning'
+                                    onClickYes={"hello"}
+                                    // onClickYes={() => deleteUser({ id: user?.id, dispatch, loading: setLoading, success: setDeleted, error: setFailed })}
+                                    onSuccess={deleted}
+                                    onFailed={failed}
+                                    // onClose={() => { setDeleted(null); setFailed(null) }}
+                                    className=""
+                                // id={`grid-delete-${user?.id}`}
+                                >
+                                    {"delete"}
+                                </ConfirmAlert>
+
+
+                            }
+                        ]}
                     />
                 )
             }
@@ -161,12 +202,12 @@ const Expense = () => {
         //   const count = Math.ceil(cashier?.total / cashier?.per_page)
         return (
             <ReactPaginate
-                 initialPage={1}
+                initialPage={1}
                 disableInitialCallback
                 previousLabel={''}
                 nextLabel={''}
                 breakLabel='...'
-                  pageCount={5}
+                pageCount={5}
                 activeClassName='active'
                 //   onPageChange={page => handlePagination(page)}
                 pageClassName={'page-item'}
@@ -216,24 +257,24 @@ const Expense = () => {
         <>
 
             {/* <Card> */}
-              <ExpenseModal Open={Open} handerClose={handerClose} handerOpen={handerOpen} />  
+            <ExpenseModal Open={Open} handerClose={handerClose} handerOpen={handerOpen} edit={edit} />
             <CardHeader className='border-bottom inline  '>
                 <Row>
                     <Col md='11' xs={8}>
-                        <CardTitle className='text-primary' tag='h4'>expense</CardTitle>
+                        <CardTitle className='text-primary' tag='h4'>Expense</CardTitle>
 
                     </Col>
                     <Col md='1' xs={4}>
                         <ButtonGroup>
                             <UncontrolledTooltip target="create-button">create-new</UncontrolledTooltip>
                             <Button id='create-button'
-                            
-                            onClick={handlerShow}
+
+                                onClick={handlerShow}
                             >
-                           
+
                                 <Plus size={18} />
                             </Button>
-                            <UncontrolledTooltip target="reload">create-new</UncontrolledTooltip>
+                            <UncontrolledTooltip target="reload">Filter</UncontrolledTooltip>
                             <Button id='reload'>
 
                                 <Sliders size={18} />

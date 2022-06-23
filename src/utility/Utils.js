@@ -1,5 +1,5 @@
- import moment from 'moment'
-import {isValid} from './helpers/common'
+import moment from 'moment'
+import { isValid } from './helpers/common'
 let id = 0
 export const getUniqId = (prefix) => {
     id++
@@ -81,4 +81,91 @@ export const makeSelectValues = (option = [], value = [], multi = false, matchWi
         // log(matchWith, multi)
     }
 
+}
+
+
+export const createSelectOptions = (array, label, value = null) => {
+    const data = []
+    array.forEach((option) => {
+        data.push({
+            label: option[label],
+            value: value ? option[value] : option
+
+        })
+    })
+    return data
+}
+export const createConstSelectOptions = (object, hide = () => { return false }) => {
+    const data = []
+    for (const [key, value] of Object.entries(object)) {
+        if (!hide(value)) {
+            data.push({
+                label: (key),
+                value
+            })
+        }
+    }
+    return data
+}
+export const createAsyncSelectOptions = (res, page, label, value, setOptions = () => { }) => {
+    const response = res?.data?.payload
+    let results = {}
+    if (response?.data?.length > 0) {
+        results = {
+            ...response,
+            data: createSelectOptions(response?.data, label, value)
+        }
+        setOptions(results?.data)
+
+        return {
+            options: results?.data ?? [],
+            hasMore: (parseInt(results?.last_page) !== parseInt(results?.current_page)),
+            additional: {
+                page: page + 1
+            }
+        }
+    } else {
+        return {
+            options: [],
+            hasMore: false
+        }
+    }
+}
+
+
+
+// export const calculateUnit = (unit, name, id, price, quantity) => {
+
+//     switch (unit) {
+//         case unit === kg:
+
+//             return price * quantity;
+//         case unit === g:
+
+//             return price * (quantity / 1000);
+//         case unit === ltr:
+
+//             return price * quantity;
+//         case unit === ml:
+
+//             return price * (quantity / 1000);
+//         case unit === pack:
+
+//             return price * quantity;
+//         case unit === btl:
+
+//             return price * quantity;
+//         default:
+//             break;
+//     }
+// }
+
+
+export const calculate=(price, Qty)=>{
+        if(price===0 && Qty===0){
+            return 0
+        }
+        else{
+            return price*Qty
+        }
 }

@@ -42,7 +42,7 @@
 // export default ProductManu
 import { useEffect, useState } from 'react'
 import DataTable from 'react-data-table-component'
-import { ChevronDown, Eye, EyeOff, Plus, RefreshCcw, Sliders } from 'react-feather'
+import { ChevronDown, Edit, Eye, EyeOff, MoreVertical, Plus, RefreshCcw, Sliders, Trash2 } from 'react-feather'
 import { useForm } from 'react-hook-form'
 import ReactPaginate from 'react-paginate'
 import { useHistory } from 'react-router-dom'
@@ -52,6 +52,8 @@ import Shimmer from '../../component/shimmers/Shimmer'
 import BsTooltip from '../../component/tooltip'
 import Show from '../../utility/Show'
 import ModalManu from './ModalManu'
+import DropDownMenu from '../../component/dropdownManu'
+import ConfirmAlert from '../../utility/helpers/ConfirmAlert'
 
 
 
@@ -61,8 +63,10 @@ const ProductManu = () => {
     const [loading, setLoading] = useState(false)
 
     const [rowsPerPage, setRowsPerPage] = useState("2")
-    const [edit, setedit ]=useState([])
-
+    const [edit,  setEdit ]=useState('')
+    const [deleted, setDeleted] = useState(false)
+    const [failed, setFailed] = useState(false)
+ 
    const[Open, setOpen]=useState(false)
    const handerClose=()=>setOpen(false)
    const handerOpen=()=>setOpen(true)
@@ -72,7 +76,7 @@ const ProductManu = () => {
 
 
    const edithandler=(row)=>{
-           setedit(row.data)
+        setEdit (row.data)
            
    }
     const data = [
@@ -167,24 +171,75 @@ const ProductManu = () => {
             cell: row => {
 
                 return (
-                    <ButtonGroup >
-                        {/* <Hide IF={row?.file === null}> */}
-                        {/* {row?.data !== null ? <BsTooltip className="ms-1" Tag={"a"} role={"button"} target={"_blank"} href={row?.file} title={("View")}>
-                            <Eye size="18" />
-                        </BsTooltip> : <BsTooltip className="ms-1" Tag={"a"} role={"button"} title={("no-View")}>
-                            <EyeOff size="18" />
-                        </BsTooltip>} */}
-                        {/* </Hide> */}
-                        <UncontrolledTooltip target="View-Manu">View-Manu</UncontrolledTooltip>
-                            <Button id='View-Manu'
+                    // <ButtonGroup >
+                    //     {/* <Hide IF={row?.file === null}> */}
+                    //     {/* {row?.data !== null ? <BsTooltip className="ms-1" Tag={"a"} role={"button"} target={"_blank"} href={row?.file} title={("View")}>
+                    //         <Eye size="18" />
+                    //     </BsTooltip> : <BsTooltip className="ms-1" Tag={"a"} role={"button"} title={("no-View")}>
+                    //         <EyeOff size="18" />
+                    //     </BsTooltip>} */}
+                    //     {/* </Hide> */}
+                    //     <UncontrolledTooltip target="View-Manu">View-Manu</UncontrolledTooltip>
+                    //         <Button id='View-Manu'
                             
-                             onClick={edithandler(row)}
+                    //          onClick={edithandler(row)}
                             
-                            >
+                    //         >
                            
-                                <Eye size={18} />
-                            </Button>
-                    </ButtonGroup>
+                    //             <Eye size={18} />
+                    //         </Button>
+                    // </ButtonGroup>
+                    <DropDownMenu
+                    tooltip={(`menu`)}
+                    component={
+                        <MoreVertical 
+                        // color={colors.primary.main}
+                        // size={IconSizes.MenuVertical} 
+                        />
+                    }
+                    options={[
+                        {
+                           
+                            icon: <Eye size={14} />,
+                            name: ("view"),
+                            // onClick: () => {
+                            //     setShowViewModal(!showViewModal)
+                            //     setEdit(user)
+                            // }
+                        },
+                        {
+                            
+                            icon:<Edit size={14} />,
+                            onClick: () => {
+                                // setShowModal(!showModal)
+                                handlerShow()
+                                setEdit(row)
+                            },
+                            name: "edit"
+                        },
+                    
+                        {
+
+                            // IF: Can(Permissions.employeesDelete) && emp?.id !== user?.id,
+                            icon: <Trash2 size={14} />,
+                            name: <ConfirmAlert
+                                title={("delete-this")}
+                                color='text-warning'
+                                onClickYes={"hello"}
+                                // onClickYes={() => deleteUser({ id: user?.id, dispatch, loading: setLoading, success: setDeleted, error: setFailed })}
+                                onSuccess={deleted}
+                                onFailed={failed}
+                                // onClose={() => { setDeleted(null); setFailed(null) }}
+                                className=""
+                                // id={`grid-delete-${user?.id}`}
+                                >
+                                {"delete"}
+                            </ConfirmAlert>
+
+
+                         }
+                    ]}
+                />
                 )
             }
         }
@@ -249,7 +304,7 @@ const ProductManu = () => {
         <>
 
             {/* <Card> */}
-            <ModalManu Open={Open} handerClose={handerClose} handerOpen={handerOpen} />
+            <ModalManu Open={Open} handerClose={handerClose} handerOpen={handerOpen} edit={edit} />
             <CardHeader className='border-bottom inline  '>
                 <Row>
                     <Col md='11' xs={8}>
@@ -266,7 +321,7 @@ const ProductManu = () => {
                            
                                 <Plus size={18} />
                             </Button>
-                            <UncontrolledTooltip target="reload">create-new</UncontrolledTooltip>
+                            <UncontrolledTooltip target="reload">Filter</UncontrolledTooltip>
                             <Button id='reload'>
 
                                 <Sliders size={18} />

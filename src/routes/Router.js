@@ -24,7 +24,7 @@ const ThemeRoutes = [
       },
 
       {
-        path: "/transactions",
+        path: "/expense",
         element: <Expense />
       },
       //   { 

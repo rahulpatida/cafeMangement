@@ -36,7 +36,8 @@ const Sidebar = () => {
                     : "nav-link text-secondary py-2"
                 }
               >
-                <i className={navi.icon}></i>
+                {/* <i className={navi.icon}></i> */}
+                <span >{navi.icon} </span>
                 <span className="ms-3 d-inline-block h5">{navi.title}</span>
               </Link>
             </NavItem>

@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { useFieldArray, useForm } from 'react-hook-form'
 import FormGroupCustom from '../../component/fromGropCustoms'
 import { Button, Card, CardBody, Col, Modal, ModalBody, ModalFooter, ModalHeader, Row, Form } from 'reactstrap'
-const ModalManu = ({ Open, handerClose, handerOpen }) => {
+const ModalManu = ({ Open, handerClose, handerOpen , edit}) => {
   const {
     control,
     handleSubmit,
@@ -31,7 +31,7 @@ const ModalManu = ({ Open, handerClose, handerOpen }) => {
         >
           <Form onSubmit={handleSubmit(onsubmit)}>
             <ModalHeader toggle={handerClose}>
-              Create ProductManu
+              {edit?'Update_Menu':'Create_Menu'}
             </ModalHeader>
             <ModalBody>
               <Card>
@@ -68,7 +68,7 @@ const ModalManu = ({ Open, handerClose, handerOpen }) => {
                     </Col>
                   </Row>
                   <Row>
-                    <Col md='6'>
+                    <Col md='4'>
                       <FormGroupCustom
 
                         placeholder={("description")}
@@ -82,7 +82,7 @@ const ModalManu = ({ Open, handerClose, handerOpen }) => {
                         rules={{ required: true }}
                       />
                     </Col>
-                    <Col md='6'>
+                    <Col md='4'>
                       <FormGroupCustom
 
                         placeholder={("discount")}
@@ -96,7 +96,22 @@ const ModalManu = ({ Open, handerClose, handerOpen }) => {
                         rules={{ required: true }}
                       />
                     </Col>
+                    <Col md='4'>
+                      <FormGroupCustom
+
+                        placeholder={("date")}
+                        type="date"
+                        name="start_date"
+                        label={("Date")}
+                        className='mb-1'
+                        // errors={errors}
+                        control={control}
+                        // value={edit?.question}
+                        rules={{ required: true }}
+                      />
+                    </Col>
                   </Row>
+
 
                 </CardBody>
               </Card>

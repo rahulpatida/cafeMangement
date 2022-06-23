@@ -1,22 +1,23 @@
+import{ Menu, Home, DollarSign} from 'react-feather'
 const navigation = [
      
      {
         
        title: "Dashboard",
        href: "/starter",
-       icon: "bi bi-speedometer2",
+       icon: <Home/>,
      },
      {
         header:'ProductManu'  ,
         title: "Manu",
         href: "/manu",
-        icon: "bi bi-patch-check",
+        icon: <Menu />,
       },
       {
-        header:'Transactions '  ,
-        title: "Transactions ",
-        href: "/transactions",
-        icon: "bi bi-patch-check",
+        header:'Expense '  ,
+        title: "Expense ",
+        href: "/expense",
+        icon: <DollarSign/>
       },
       // {
       //   header:'Employee'  ,
