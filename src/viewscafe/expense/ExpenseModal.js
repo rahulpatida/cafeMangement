@@ -35,6 +35,7 @@ const [show, setShow1]=useState(false)
         options()
     }, [])
     const test = [
+<<<<<<< HEAD
         {
             id: 1,
             name: 'tea'
@@ -55,6 +56,11 @@ const [show, setShow1]=useState(false)
             id: 5,
             name: 'petrol'
         }
+=======
+        { Expense: 'Expense' },
+        { Saving: 'Saving' },
+        { Investment: 'Invesme   nt' }
+>>>>>>> 1d4f4269c3fc52cd40dcb7eb350665ab4aae3d7f
     ]
 
     const  handlerCategory =()=>{

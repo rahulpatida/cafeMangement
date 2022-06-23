@@ -63,63 +63,61 @@ const ProductManu = () => {
     const [loading, setLoading] = useState(false)
 
     const [rowsPerPage, setRowsPerPage] = useState("2")
-    const [edit,  setEdit ]=useState('')
-    const [deleted, setDeleted] = useState(false)
-    const [failed, setFailed] = useState(false)
- 
-   const[Open, setOpen]=useState(false)
-   const handerClose=()=>setOpen(false)
-   const handerOpen=()=>setOpen(true)
-   const  handlerShow =()=>{
-         setOpen(!Open)
-   }
+    const [edit, setedit] = useState([])
+
+    const [Open, setOpen] = useState(false)
+    const handerClose = () => setOpen(false)
+    const handerOpen = () => setOpen(true)
+    const handlerShow = () => {
+        setOpen(!Open)
+    }
 
 
-   const edithandler=(row)=>{
-        setEdit (row.data)
-           
-   }
+    const edithandler = (row) => {
+        setedit(row.data)
+
+    }
     const data = [
-        {  
-            id:1,
+        {
+            id: 1,
             product: 'samosa',
             price: '20',
-            description:'this is best samosa'
+            description: 'this is best samosa'
 
         },
         {
-            id:2,
+            id: 2,
             product: 'coeffi',
             price: '20',
-            description:'this is best samosa'
+            description: 'this is best samosa'
 
         },
         {
-            id:3,
+            id: 3,
             product: 'milk',
             price: '20',
-            description:'this is best samosa'
+            description: 'this is best samosa'
 
         },
         {
-            id:4,
+            id: 4,
             product: 'samosa',
             price: '20',
-            description:'this is best samosa'
+            description: 'this is best samosa'
 
         },
         {
-            id:5,
+            id: 5,
             product: 'coeffi',
             price: '20',
-            description:'this is best samosa'
+            description: 'this is best samosa'
 
         },
         {
-            id:6,
+            id: 6,
             product: 'milk',
             price: '20',
-            description:'this is best samosa'
+            description: 'this is best samosa'
 
         }
     ]
@@ -127,9 +125,9 @@ const ProductManu = () => {
 
 
     const ManuColumn = [
-       
+
         {
-            
+
             name: ("#"),
             selector: (row, i) => (row.id ? (i + 1) : null),
             maxWidth: "10px"
@@ -155,7 +153,7 @@ const ProductManu = () => {
             sortable: true,
             minWidth: '150px'
         },
-        
+
         {
             name: ("date"),
             selector: ({ value }) => {
@@ -171,75 +169,24 @@ const ProductManu = () => {
             cell: row => {
 
                 return (
-                    // <ButtonGroup >
-                    //     {/* <Hide IF={row?.file === null}> */}
-                    //     {/* {row?.data !== null ? <BsTooltip className="ms-1" Tag={"a"} role={"button"} target={"_blank"} href={row?.file} title={("View")}>
-                    //         <Eye size="18" />
-                    //     </BsTooltip> : <BsTooltip className="ms-1" Tag={"a"} role={"button"} title={("no-View")}>
-                    //         <EyeOff size="18" />
-                    //     </BsTooltip>} */}
-                    //     {/* </Hide> */}
-                    //     <UncontrolledTooltip target="View-Manu">View-Manu</UncontrolledTooltip>
-                    //         <Button id='View-Manu'
-                            
-                    //          onClick={edithandler(row)}
-                            
-                    //         >
-                           
-                    //             <Eye size={18} />
-                    //         </Button>
-                    // </ButtonGroup>
-                    <DropDownMenu
-                    tooltip={(`menu`)}
-                    component={
-                        <MoreVertical 
-                        // color={colors.primary.main}
-                        // size={IconSizes.MenuVertical} 
-                        />
-                    }
-                    options={[
-                        {
-                           
-                            icon: <Eye size={14} />,
-                            name: ("view"),
-                            // onClick: () => {
-                            //     setShowViewModal(!showViewModal)
-                            //     setEdit(user)
-                            // }
-                        },
-                        {
-                            
-                            icon:<Edit size={14} />,
-                            onClick: () => {
-                                // setShowModal(!showModal)
-                                handlerShow()
-                                setEdit(row)
-                            },
-                            name: "edit"
-                        },
-                    
-                        {
+                    <ButtonGroup >
+                        {/* <Hide IF={row?.file === null}> */}
+                        {/* {row?.data !== null ? <BsTooltip className="ms-1" Tag={"a"} role={"button"} target={"_blank"} href={row?.file} title={("View")}>
+                            <Eye size="18" />
+                        </BsTooltip> : <BsTooltip className="ms-1" Tag={"a"} role={"button"} title={("no-View")}>
+                            <EyeOff size="18" />
+                        </BsTooltip>} */}
+                        {/* </Hide> */}
+                        <UncontrolledTooltip target="View-Manu">View-Manu</UncontrolledTooltip>
+                        <Button id='View-Manu'
 
-                            // IF: Can(Permissions.employeesDelete) && emp?.id !== user?.id,
-                            icon: <Trash2 size={14} />,
-                            name: <ConfirmAlert
-                                title={("delete-this")}
-                                color='text-warning'
-                                onClickYes={"hello"}
-                                // onClickYes={() => deleteUser({ id: user?.id, dispatch, loading: setLoading, success: setDeleted, error: setFailed })}
-                                onSuccess={deleted}
-                                onFailed={failed}
-                                // onClose={() => { setDeleted(null); setFailed(null) }}
-                                className=""
-                                // id={`grid-delete-${user?.id}`}
-                                >
-                                {"delete"}
-                            </ConfirmAlert>
+                            onClick={edithandler(row)}
 
+                        >
 
-                         }
-                    ]}
-                />
+                            <Eye size={18} />
+                        </Button>
+                    </ButtonGroup>
                 )
             }
         }
@@ -249,12 +196,12 @@ const ProductManu = () => {
         //   const count = Math.ceil(cashier?.total / cashier?.per_page)
         return (
             <ReactPaginate
-                 initialPage={1}
+                initialPage={1}
                 disableInitialCallback
                 previousLabel={''}
                 nextLabel={''}
                 breakLabel='...'
-                  pageCount={5}
+                pageCount={5}
                 activeClassName='active'
                 //   onPageChange={page => handlePagination(page)}
                 pageClassName={'page-item'}
@@ -315,10 +262,10 @@ const ProductManu = () => {
                         <ButtonGroup>
                             <UncontrolledTooltip target="create-button">create-new</UncontrolledTooltip>
                             <Button id='create-button'
-                            
-                            onClick={handlerShow}
+
+                                onClick={handlerShow}
                             >
-                           
+
                                 <Plus size={18} />
                             </Button>
                             <UncontrolledTooltip target="reload">Filter</UncontrolledTooltip>
