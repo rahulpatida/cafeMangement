@@ -1,0 +1,81 @@
+{
+    "Product": [
+        {
+            "id": 1,
+            "name": "potato",
+            "quanitity": 5,
+            "unit": "kg",
+            "price": "50 Rs",
+            "description": "best qualty",
+            "type": 1
+        },
+        {
+            "id": 2,
+            "name": "tomato",
+            "quanitity": 3,
+            "unit": "kg",
+            "price": "60 Rs",
+            "description": "best qualty",
+            "type": "1"
+        },
+        {
+            "name": "pepsi ",
+            "quanitity": "3",
+            "unit": 5,
+            "price": "12",
+            "description": "best price",
+            "id": 3
+        },
+        {
+            "name": "water",
+            "quanitity": "2",
+            "unit": 5,
+            "price": "25",
+            "description": "fggdg",
+            "id": 4
+        },
+        {
+            "name": "hg",
+            "quanitity": "12",
+            "unit": 1,
+            "price": "25",
+            "description": "ggfh",
+            "id": 5
+        },
+        {
+            "name": "hg",
+            "quanitity": "12",
+            "unit": 1,
+            "price": "25",
+            "description": "ggfh",
+            "id": 6
+        }
+    ],
+    "unitType": [
+        {
+            "id": 1,
+            "name": "KiloGrams",
+            "abbreiation": "kg"
+        },
+        {
+            "id": 2,
+            "name": "Litre",
+            "abbreiation": "ltr"
+        },
+        {
+            "id": 3,
+            "name": "PACKS",
+            "abbreiation": "pack"
+        },
+        {
+            "id": 4,
+            "name": "Number",
+            "abbreiation": "nos"
+        },
+        {
+            "id": 5,
+            "name": "BOTTLES",
+            "abbreiation": "btl"
+        }
+    ]
+}
