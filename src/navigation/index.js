@@ -69,26 +69,14 @@ const navigation = [
   //   href: "/about",
   //   icon: "bi bi-people",
   // },
-];
-
-{
-
-  title: "Dashboard",
-    href: "/starter",
-      icon: "bi bi-speedometer2",
-  },
-{
-  header: 'ProductManu',
-    title: "Manu",
-      href: "/manu",
-        icon: "bi bi-patch-check",
-  },
-{
-  header: 'Employees',
+  {
+    header: 'Employees',
     title: "EmployeesInfo",
-      href: "/employees",
-        icon: "bi bi-patch-check",
+    href: "/employees",
+    icon: "bi bi-patch-check",
   },
+
+
   // {
   //   title: "Alert",
   //   href: "/alerts",
