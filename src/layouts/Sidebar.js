@@ -25,9 +25,9 @@ const Sidebar = () => {
       <div className="pt-4 mt-2">
         <Nav vertical className="sidebarNav" >
           {navigation.map((navi, index) => (
-
             <NavItem key={index} >
-              <h5 className="text-start">{navi.header}</h5>
+
+              <h4 className="justify-content-center">{navi.header}</h4>
               <Link
                 to={navi.href}
                 className={
@@ -41,15 +41,7 @@ const Sidebar = () => {
               </Link>
             </NavItem>
           ))}
-          {/* <Button
-            color="danger"
-            tag="a"
-            target="_blank"
-            className="mt-3"
-            href="https://www.wrappixel.com/templates/xtreme-react-redux-admin/?ref=33"
-          >
-            Upgrade To Pro
-          </Button> */}
+
         </Nav>
       </div>
     </div>

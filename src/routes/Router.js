@@ -1,6 +1,7 @@
 import { lazy } from "react";
 // import { Navigate } from "react-router-dom";
 
+
 /****Layouts*****/
 const FullLayout = lazy(() => import("../layouts/FullLayout.js"));
 
@@ -19,6 +20,8 @@ const Starter = lazy(() => import("../views/Starter.js"));
 const ProductManu = lazy(() => import('../viewscafe/productManu'))
 const Employeesview = lazy(() => import('../viewscafe/employees/Employeesview'))
 const Expense = lazy(() => import('../viewscafe/expense'))
+const Product = lazy(() => import("../viewscafe/product/Product.js"))
+const ProductForm = lazy(() => import("../viewscafe/product/ProductForm"))
 /*****Routes******/
 
 const ThemeRoutes = [
@@ -90,9 +93,13 @@ const ThemeRoutes = [
       //    },
       //   { path: "/breadcrumbs",
       //    exact: true,
-      //     element: <Breadcrumbs /> },
-    ],
-  },
-];
+      //     element: <Breadcrumbs /> 
+    ]
+  }]
+
+
+
+
+
 
 export default ThemeRoutes;

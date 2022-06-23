@@ -1,44 +1,40 @@
 import { Outlet } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import Header from "./Header";
-import { Col, Container, Row } from "reactstrap";
-import Footer from "./footer/footer";
-
-
+import Footer from "./footer/Footer";
+// import Header from "../views/header/Header";
+import { Container, Row, Col } from "reactstrap";
 const FullLayout = () => {
+    return (<>
+        <main>
+            <Row>
+                <div className="pageWrapper d-lg-flex">
+                    <Col md="2" xs="2">
 
-  return (
-    <main>
-      <Row>
+                        {/********Sidebar**********/}
+                        <aside className="sidebarArea shadow overflow-scroll fixed-top" id="sidebarArea">
+                            <Sidebar />
+                        </aside>
+                        {/********Content Area**********/}
+                    </Col>
+                    <Col md="10" xs="10">
+                        <div className="contentArea" >
+                            {/* <div className="contentArea mt-5"> */}
+                            {/********header**********/}
+                            <Header />
+                            {/********Middle Content**********/}
+                            <Container className="p-4 wrapper" fluid>
+                                {/* <Header /> */}
+                                <Outlet />
+                            </Container>
+                        </div>
+                    </Col>
+                </div>
 
-        <div className="pageWrapper d-lg-flex  ">
-          <Col md='2'>
-            {/********Sidebar**********/}
-            <aside className="sidebarArea shadow  fixed-top" id="sidebarArea">
-              <Sidebar />
-            </aside>
-          </Col>
-          {/********Content Area**********/}
-          <Col md='10'>
-            <div className="contentArea p-1 "  >
-              {/* <div className="contentArea mt-5"> */}
-              {/********header**********/}
-              <Header />
-              {/********Middle Content**********/}
-              <Container className=" wrapper mt-5" >
-                {/* <Header /> */}
-                <Outlet />
-              </Container>
+            </Row>
+        </main>
 
-            </div>
-          </Col>
-        </div>
-        {/* <h1>header</h1> */}
-       
-      </Row>
-      <Footer/>
-    </main>
-  );
+    </>);
 };
 
 export default FullLayout;
