@@ -13,6 +13,7 @@ import ExpenseModal from './ExpenseModal'
 
 import DropDownMenu from '../../component/dropdownManu'
 import ConfirmAlert from '../../utility/helpers/ConfirmAlert'
+import ExpenseView from './ExpenseView'
 
 
 
@@ -26,15 +27,19 @@ const Expense = () => {
 
     // const [rowsPerPage, setRowsPerPage] = useState("2")
     const [edit, setEdit] = useState([])
+    const [view, setView] = useState([])
     const [deleted, setDeleted] = useState(false)
     const [failed, setFailed] = useState(false)
     const [Open, setOpen] = useState(false)
+    const [show, setshow] = useState(false)
     const handerClose = () => setOpen(false)
     const handerOpen = () => setOpen(true)
     const handlerShow = () => {
         setOpen(!Open)
     }
-
+    const handlerShow1 = () => {
+        setOpen(!show)
+    }
 
     const edithandler = (row) => {
         setEdit(row.data)
@@ -155,20 +160,20 @@ const Expense = () => {
 
                                 icon: <Eye size={14} />,
                                 name: ("view"),
-                                // onClick: () => {
-                                //     setShowViewModal(!showViewModal)
-                                //     setEdit(user)
-                                // }
-                            },
-                            {
-
-                                icon: <Edit size={14} />,
                                 onClick: () => {
-                                    handlerShow()
-                                    setEdit(row)
-                                 },
-                                name: "edit"
+                                    handlerShow1()
+                                     setView(row)
+                                }
                             },
+                            // {
+
+                            //     icon: <Edit size={14} />,
+                            //     onClick: () => {
+                            //         handlerShow()
+                            //         setEdit(row)
+                            //      },
+                            //     name: "edit"
+                            // },
                             // {
 
                             {
@@ -256,7 +261,7 @@ const Expense = () => {
     return (
         <>
 
-            {/* <Card> */}
+          <ExpenseView  Open={Open} handerClose={handerClose} handerOpen={handerOpen} edit={view} />
             <ExpenseModal Open={Open} handerClose={handerClose} handerOpen={handerOpen} edit={edit} />
             <CardHeader className='border-bottom inline  '>
                 <Row>

@@ -1,45 +1,4 @@
-// import React, { Component, useState } from 'react'
-// import DropDownMenu from '../../component/dropdownManu'
-// import FormGroupCustom from '../../component/fromGropCustoms'
-// import TableGrid from '../../component/tableGrid'
-// import { useForm } from 'react-hook-form'
-// import { Button } from 'reactstrap'
-// import CenteredModal from '../../component/CenteredModal'
-// import ModalManu from './ModalManu'
-// // import SideModal from '../../component/sideModal/sideModal'
-// const ProductManu = () => {
 
-//   const { formState: { errors }, handleSubmit, control, reset, setValue, watch, getValues } = useForm()
-
-//   // const[open, setOpen]=useState(false)
-//   // const  handleClose=()=>setOpen(false)
-//   // const handershow= ()=>{
-//   //   setOpen(!open)
-//   // }
-//   return (
-//     <>
-//       <h1>Product</h1>
-//       <TableGrid />
-//       <DropDownMenu />
-
-//       <FormGroupCustom
-//         label={"title"}
-//         name={"title"}
-//         type={"checkbox"}
-//         errors={errors}
-//         //  values={companyData}
-//         className="mb-2"
-//         control={control}
-//         rules={{ required: true }} />
-
-
-//     </>
-
-
-//   )
-// }
-
-// export default ProductManu
 import { useEffect, useState } from 'react'
 import DataTable from 'react-data-table-component'
 import { ChevronDown, Edit, Eye, EyeOff, MoreVertical, Plus, RefreshCcw, Sliders, Trash2 } from 'react-feather'
@@ -54,35 +13,41 @@ import Show from '../../utility/Show'
 import ModalManu from './ModalManu'
 import DropDownMenu from '../../component/dropdownManu'
 import ConfirmAlert from '../../utility/helpers/ConfirmAlert'
-
+ 
+import Manuviewmodal from './Manuviewmodal'
 
 
 
 
 const ProductManu = () => {
+
+
     const [loading, setLoading] = useState(false)
 
     const [rowsPerPage, setRowsPerPage] = useState("2")
-    const [edit, setedit] = useState([])
+    const [edit,  setEdit ]=useState('')
+    const [deleted, setDeleted] = useState(false)
+    const [failed, setFailed] = useState(false)
+ 
+   const[Open, setOpen]=useState(false)
 
-    const [Open, setOpen] = useState(false)
-    const handerClose = () => setOpen(false)
-    const handerOpen = () => setOpen(true)
-    const handlerShow = () => {
-        setOpen(!Open)
-    }
+   const handerClose=()=>setOpen(false)
+   const handerOpen=()=>setOpen(true)
+   const  handlerShow =()=>{
+         setOpen(!Open)
+   }
 
-
-    const edithandler = (row) => {
-        setedit(row.data)
-
-    }
+   const edithandler=(row)=>{
+        setEdit (row.data)
+           
+   }
     const data = [
         {
             id: 1,
             product: 'samosa',
             price: '20',
-            description: 'this is best samosa'
+            description: 'this is best samosa',
+            date:''
 
         },
         {
@@ -169,24 +134,77 @@ const ProductManu = () => {
             cell: row => {
 
                 return (
-                    <ButtonGroup >
-                        {/* <Hide IF={row?.file === null}> */}
-                        {/* {row?.data !== null ? <BsTooltip className="ms-1" Tag={"a"} role={"button"} target={"_blank"} href={row?.file} title={("View")}>
-                            <Eye size="18" />
-                        </BsTooltip> : <BsTooltip className="ms-1" Tag={"a"} role={"button"} title={("no-View")}>
-                            <EyeOff size="18" />
-                        </BsTooltip>} */}
-                        {/* </Hide> */}
-                        <UncontrolledTooltip target="View-Manu">View-Manu</UncontrolledTooltip>
-                        <Button id='View-Manu'
+                    // <ButtonGroup >
+                    //     {/* <Hide IF={row?.file === null}> */}
+                    //     {/* {row?.data !== null ? <BsTooltip className="ms-1" Tag={"a"} role={"button"} target={"_blank"} href={row?.file} title={("View")}>
+                    //         <Eye size="18" />
+                    //     </BsTooltip> : <BsTooltip className="ms-1" Tag={"a"} role={"button"} title={("no-View")}>
+                    //         <EyeOff size="18" />
+                    //     </BsTooltip>} */}
+                    //     {/* </Hide> */}
+                    //     <UncontrolledTooltip target="View-Manu">View-Manu</UncontrolledTooltip>
+                    //         <Button id='View-Manu'
+                            
+                    //          onClick={edithandler(row)}
+                            
+                    //         >
+                           
+                    //             <Eye size={18} />
+                    //         </Button>
+                    // </ButtonGroup>
+                    <DropDownMenu
+                    tooltip={(`menu`)}
+                    component={
+                        <MoreVertical 
+                        // color={colors.primary.main}
+                        // size={IconSizes.MenuVertical} 
+                        size={18}
+                        />
+                    }
+                    options={[
+                        // {
+                           
+                        //     icon: <Eye size={14} />,
+                        //     name: ("view"),
+                        //      onClick: () => {
+                        //         handlerShow()
+                        //          setEdit(row)
+                        //      }
+                        // },
+                        {
+                            
+                            icon:<Edit size={14} />,
+                            onClick: () => {
+                                // setShowModal(!showModal)
+                                handlerShow()
+                                setEdit(row)
+                            },
+                            name: "edit"
+                        },
+                    
+                        {
 
-                            onClick={edithandler(row)}
+                            // IF: Can(Permissions.employeesDelete) && emp?.id !== user?.id,
+                            icon: <Trash2 size={14} />,
+                            name: <ConfirmAlert
+                                title={("delete-this")}
+                                color='text-warning'
+                                onClickYes={"hello"}
+                                // onClickYes={() => deleteUser({ id: user?.id, dispatch, loading: setLoading, success: setDeleted, error: setFailed })}
+                                onSuccess={deleted}
+                                onFailed={failed}
+                                // onClose={() => { setDeleted(null); setFailed(null) }}
+                                className=""
+                                // id={`grid-delete-${user?.id}`}
+                                >
+                                {"delete"}
+                            </ConfirmAlert>
 
-                        >
 
-                            <Eye size={18} />
-                        </Button>
-                    </ButtonGroup>
+                         }
+                    ]}
+                />
+                  
                 )
             }
         }
@@ -251,8 +269,11 @@ const ProductManu = () => {
         <>
 
             {/* <Card> */}
+            {/* <ManuViewModal  edit={edit}/> */}
+          
             <ModalManu Open={Open} handerClose={handerClose} handerOpen={handerOpen} edit={edit} />
-            <CardHeader className='border-bottom inline  '>
+            {/* < Manuviewmodal  Open={Open} handerClose={handerClose} handerOpen={handerOpen} edit={edit}  /> */}
+            <CardHeader className='border-bottom inline'>
                 <Row>
                     <Col md='11' xs={8}>
                         <CardTitle className='text-primary' tag='h4'>Product Manu</CardTitle>
