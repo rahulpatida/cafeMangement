@@ -24,15 +24,17 @@ const GridView = ({ gridView = () => { }, data = null, loading, shimmer, gridCol
             </Row>
         )
     } else {
+        console.log(data,"dhfkjdshfkdh")
         return (
+            
             <>
 
                 {
-                    data?.data.data ?
+                    data ?
                         <Row key={"row-of-grid"}>
                             {
 
-                                data?.data?.data?.map((item, index) => {
+                                data?.map((item, index) => {
                                     return (
                                         <>
                                             <Col key={`${item.id}-grid-single`} className='grid d-flex align-items-stretch' md={gridCol}>

@@ -1,5 +1,6 @@
 import moment from 'moment'
 import { isValid } from './helpers/common'
+import { toast } from "react-toastify"
 let id = 0
 export const getUniqId = (prefix) => {
     id++
@@ -82,11 +83,6 @@ export const makeSelectValues = (option = [], value = [], multi = false, matchWi
     }
 
 }
-<<<<<<< HEAD
-
-
-=======
->>>>>>> dbe4b39980b3a4918eff0c3d4f24b078d78fb00b
 export const createSelectOptions = (array, label, value = null) => {
     const data = []
     array.forEach((option) => {
@@ -133,45 +129,37 @@ export const createAsyncSelectOptions = (res, page, label, value, setOptions = (
             hasMore: false
         }
     }
-<<<<<<< HEAD
 }
 
 
+export const SuccessToast = (message, settings = {}, comp = null) => {
+    toast(comp ?? (message, settings), { type: toast.TYPE.SUCCESS, ...settings })
+}
+/**
+ * Display Success Tost Messages
+ *
+ * @param {*} message 
+ * @param {*} [settings={}] You can add toast settings
+ */
+export const MessageToast = (message, settings = {}) => {
+    toast(message, { type: toast.TYPE.DEFAULT, ...settings })
+}
+/**
+ * Display Error Tost Messages
+ *
+ * @param {*} message 
+ * @param {*} [settings={}] You can add toast settings
+ */
+export const ErrorToast = (message, settings = {}, comp = null) => {
+    toast(comp ?? (message, settings), { type: toast.TYPE.ERROR, limit: 1, ...settings })
+}
 
-// export const calculateUnit = (unit, name, id, price, quantity) => {
-
-//     switch (unit) {
-//         case unit === kg:
-
-//             return price * quantity;
-//         case unit === g:
-
-//             return price * (quantity / 1000);
-//         case unit === ltr:
-
-//             return price * quantity;
-//         case unit === ml:
-
-//             return price * (quantity / 1000);
-//         case unit === pack:
-
-//             return price * quantity;
-//         case unit === btl:
-
-//             return price * quantity;
-//         default:
-//             break;
-//     }
-// }
-
-
-export const calculate=(price, Qty)=>{
-        if(price===0 && Qty===0){
-            return 0
-        }
-        else{
-            return price*Qty
-        }
-=======
->>>>>>> dbe4b39980b3a4918eff0c3d4f24b078d78fb00b
+/**
+ * Display Warning Tost Messages
+ *
+ * @param {*} message 
+ * @param {*} [settings={}] You can add toast settings
+ */
+export const WarningToast = (message, settings = {}) => {
+    toast((message, settings), { type: toast.TYPE.WARNING, ...settings })
 }

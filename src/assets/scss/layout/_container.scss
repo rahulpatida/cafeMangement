@@ -29,3 +29,64 @@
 .button-group .btn {
   margin: 3px;
 }
+
+
+ .gradient-shadow-primary {
+   background: linear-gradient(118deg, #5058b8, rgba(80, 89, 184, 0.7));
+   box-shadow: 0 0 10px 1px #5059b8b3;
+   border-color: #5058b8 !important;
+ }
+
+  .gradient-shadow-secondary {
+    background: linear-gradient(118deg, #82868b, rgba(130, 134, 139, 0.7));
+    box-shadow: 0 0 10px 1px #82868bb3;
+    border-color: #82868b !important;
+  }
+
+ .gradient-shadow-dark {
+   background: linear-gradient(118deg, #4c4c4c, #c9b9b9b3);
+   box-shadow: 0 0 10px 1px #4c4c4cb3;
+ }
+
+ .gr-box-info {
+   background: linear-gradient(118deg, #0dcaf0, #21caf0b3);
+   box-shadow: 0 0 10px 1px #21caf0b3;
+ }
+
+ .gr-box-warning {
+   background: linear-gradient(118deg, #f1c112, #f1c112b3);
+   box-shadow: 0 0 10px 1px #f1c112b3;
+ }
+
+ .gr-box-success {
+   background: linear-gradient(118deg, #198754, #198754b3);
+   box-shadow: 0 0 10px 1px #198754b3;
+ }
+
+ .gr-box-danger {
+   background: linear-gradient(118deg, #de3545, #de3545b3);
+   box-shadow: 0 0 10px 1px #de3545b3;
+ }
+
+ .gr-box-black {
+   background: linear-gradient(118deg, #000000, #000000b3);
+   box-shadow: 0 0 10px 1px #000000b3;
+ }
+
+ .card {
+   box-shadow: 0 4px 24px 0 #5b96c9c2 !important;
+   box-shadow: 0 0 10px 1px #5059b88a !important;
+
+   &.white {
+       box-shadow: 0 4px 24px 0 #22292f1a !important;
+   }
+ }
+
+ .shadow,
+ .popover {
+   box-shadow: 0 0 10px 1px #3948ec8a !important;
+
+   &.white {
+       box-shadow: 0 4px 24px 0 #22292f1a !important;
+   }
+ }

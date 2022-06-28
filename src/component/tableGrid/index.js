@@ -13,6 +13,7 @@ const TableGrid = ({
     columns, force = false, selector = "user", refresh = false, isRefreshed = () => { }, gridView = () => { }, state = null, gridCol = "4", jsonData = null, params = null, loadFrom = () => { }, display = "grid", shimmer = null
 }) => {
     const selected = useSelector(s => s[selector])
+    const option  = useSelector(state => state.option)
     const dispatch = useDispatch()
     const [page, setPage] = useState(1)
     const [perPage, setPerPage] = useState(25)

@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
-//import { AsyncPaginate } from 'react-select-async-paginate'
+import { AsyncPaginate } from 'react-select-async-paginate'
+import AsyncSelect from 'react-select/async'
 import SelectReact, { components } from 'react-select'
 import classNames from 'classnames'
 import { Controller } from 'react-hook-form'
 import { getSelectValues, makeSelectValues } from "../../utility/Utils"
-const Select = ({ error = null, control, value, name, rules, isMulti, errors, options, async = false, isClearable = false, components, loadOptions = () => { }, ...rest }) => {
+const Select = ({ error = null, control, key, value, name, rules, matchWith=null,onChangeValue=()=>{}, isMulti, errors, options, async = false, isClearable = false, components, loadOptions = () => { }, ...rest }) => {
     const [v, setV] = useState(null)
-
+  
     if (async) {
         return (
             <>
@@ -16,7 +17,8 @@ const Select = ({ error = null, control, value, name, rules, isMulti, errors, op
                     name={name}
                     rules={rules}
                     render={({ field: { onChange, ref } }) => (
-                        <SelectReact
+                        <AsyncPaginate
+                        //    key={`control-select-${key}-${options?.length}`}
                             placeholder={"select"}
                             name={name}
                             // ref={ref}
@@ -31,11 +33,19 @@ const Select = ({ error = null, control, value, name, rules, isMulti, errors, op
                             value={v ? makeSelectValues(options, v, isMulti) : makeSelectValues(options, value, isMulti)}
                             onChange={val => {
                                 if (isMulti) {
-                                    onChange(getSelectValues(val))
-                                    setV(getSelectValues(val))
+                                    onChange(getSelectValues(val, matchWith))
+                                    setV(getSelectValues(val, matchWith))
+                                    onChangeValue(getSelectValues(val, matchWith))
                                 } else {
-                                    onChange(val?.value)
-                                    setV(val?.value)
+                                    if (matchWith) {
+                                        onChange(val?.value[matchWith])
+                                        setV(val?.value[matchWith])
+                                        onChangeValue(val?.value[matchWith])
+                                    } else {
+                                        onChange(val?.value)
+                                        setV(val?.value)
+                                        onChangeValue(val?.value)
+                                    }
                                 }
                             }}
                             additional={{
@@ -60,6 +70,8 @@ const Select = ({ error = null, control, value, name, rules, isMulti, errors, op
                     rules={rules}
                     render={({ field: { onChange, ref } }) => (
                         <SelectReact
+                         
+
                             ref={ref}
                             isMulti={isMulti}
                             placeholder={"select"}

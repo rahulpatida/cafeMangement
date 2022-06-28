@@ -29,9 +29,9 @@ const Header = () => {
         document.getElementById("sidebarArea").classList.toggle("showSidebar");
     };
     return (
-        <Navbar color="white" dark expand="md" className="fixed" style={{
-            boxShadow: "0 2px 2px 2px rgba(9, 9, 9, 0.23)"
-        }}>
+        <Navbar color="primary" dark expand="md"  
+           
+        >
             <div className="d-flex align-items-center ">
                 <NavbarBrand href="/" className="d-lg-none">
                     <LogoWhite />

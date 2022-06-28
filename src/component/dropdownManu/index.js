@@ -13,7 +13,7 @@ const DropDownMenu = ({ direction = "start", button = null, tag = "span", compon
                 {tooltip}
             </UncontrolledTooltip> : null}
             <UncontrolledButtonDropdown direction={direction}>
-                {button}
+                {button} 
                 {
                     button ? <DropdownToggle className='dropdown-toggle-split' id={id} outline color='primary' caret /> : <DropdownToggle
                         className={classNames('cursor-pointer')}

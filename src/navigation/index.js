@@ -5,91 +5,48 @@ const navigation = [
         
        title: "Dashboard",
        href: "/starter",
-       icon: <Home/>,
+       icon: <Home   size={15}/>,
      },
      {
         header:'ProductManu'  ,
-        title: "Manu",
+        title: "MenuProduct",
         href: "/manu",
-        icon: <Menu />,
+        icon: <Menu size={15} />,
       },
       {
         header:'Expense '  ,
         title: "Expense ",
         href: "/expense",
-        icon: <DollarSign/>
+        icon: <DollarSign  size={15}/>
       },
       {
         header: 'Employees',
-        title: "EmployeesInfo",
+        title: "Employees",
         href: "/employees",
-        icon: <User/>,
+        icon: <User  size={15} />,
       },
-      // {
-      //   header:'Employee'  ,
-      //   title: "Employee",
-      //   href: "/employee",
-      //   icon: "bi bi-patch-check",
-      // },
+     
   
     {
-        // header: 'Product',
+        header: 'Product',
         title: "product",
         href: "/product",
-        icon: "bi bi-hdd-stack",
+        icon: <User   size={15}/>,
     },
+    {
+      header: 'Recipes',
+      title: "Recipe",
+      href: "/recipe",
+      icon: <User   size={15}/>,
+  },
   
-    // {
-    //   header:'Employee'  ,
-    //   title: "Employee",
-    //   href: "/employee",
-    //   icon: "bi bi-patch-check",
-    // },
-    // {
-    //   title: "Alert",
-    //   href: "/alerts",
-    //   icon: "bi bi-bell",
-    // },
-    // {
-    //   title: "Badges",
-    //   href: "/badges",
-    //   icon: "bi bi-patch-check",
-    // },
-    // {
-    //   title: "Buttons",
-    //   href: "/buttons",
-    //   icon: "bi bi-hdd-stack",
-    // },
-    // { 
-    //   title: "Cards",
-    //   href: "/cards",
-    //   icon: "bi bi-card-text",
-    // },
-    // {
-    //   title: "Grid",
-    //   href: "/grid",
-    //   icon: "bi bi-columns",
-    // },
-    // {
-    //   title: "Table",
-    //   href: "/table",
-    //   icon: "bi bi-layout-split",
-    // },
-    // {
-    //   title: "Forms",
-    //   href: "/forms",
-    //   icon: "bi bi-textarea-resize",
-    // },
-    // {
-    //   title: "Breadcrumbs",
-    //   href: "/breadcrumbs",
-    //   icon: "bi bi-link",
-    // },
-    // {
-    //   title: "About",
-    //   href: "/about",
-    //   icon: "bi bi-people",
-    // },
+  {
+    header: 'Category',
+    title: "Category",
+    href: "/category",
+    icon: <User   size={15}/>,
+},
+   
 ];
 
  

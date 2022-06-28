@@ -16,7 +16,7 @@ export const addedProduct = (product) => {
 export const loadProduct = () => {
     return function (dispatch) {
         axios.get(`http://localhost:5000/Product`).then((resp) => {
-            console.log("res", resp)
+            console.log("res", resp.data)
             dispatch(productLoad(resp.data));
         }).catch(error => console.log(error));
     }

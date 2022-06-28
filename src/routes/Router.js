@@ -22,6 +22,8 @@ const Employeesview = lazy(() => import('../viewscafe/employees/Employeesview'))
 const Expense = lazy(() => import('../viewscafe/expense'))
 const Product = lazy(() => import("../viewscafe/product/Product.js"))
 const ProductForm = lazy(() => import("../viewscafe/product/ProductForm"))
+const Recipes= lazy(() => import("../viewscafe/recipes"))
+const Category= lazy(() => import("../viewscafe/category"))
 /*****Routes******/
 
 const ThemeRoutes = [
@@ -62,6 +64,14 @@ const ThemeRoutes = [
         path: "/product/create",
         element: <ProductForm />
     },
+    {
+      path: "/recipe",
+      element: <Recipes/>
+  },
+  {
+    path: "/category",
+    element: <Category/>
+},
       //  {
       //   path: "/employee",
       //   exact: true, 

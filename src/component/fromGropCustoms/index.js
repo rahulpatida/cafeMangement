@@ -180,6 +180,8 @@ const FormGroupCustom = ({
     const selectController = () => {
         return (
             <Select
+                
+
                 loadOptions={loadOptions}
                 control={control}
                 value={value ? value : values ? values[name] : ''}
@@ -187,6 +189,7 @@ const FormGroupCustom = ({
                 errors={errors}
                 isMulti={isMulti}
                 rules={{ ...rules }}
+                // matchWith={100}
                 components={components}
                 name={name}
                 id={`input-${name}-tooltip`}
@@ -277,25 +280,27 @@ const FormGroupCustom = ({
                 }
                 {
 
-                    noGroup ? selectController() : <> <InputGroup className={classNames(className)}>
-                        {
-                            prepend ?? ''
-                        }
-                        <div className='flex-1'>
-                            {selectController()}
-                        </div>
+                    noGroup ? selectController() : <> 
+                    <InputGroup className={classNames(className) }>
+                    {
+                        prepend ?? ''
+                    }
+                    <div className='flex-1'>
+                        {selectController()}
+                    </div>
 
-                        {
-                            noLabel && message ? <InputGroupText className='cursor-pointer'>
-                                <Info size={20} id={`help-tooltip-message-${name}`} />
-                                <UncontrolledTooltip target={`help-tooltip-message-${name}`}>
-                                    {message}
-                                </UncontrolledTooltip>
-                            </InputGroupText> : null}
-                        {
-                            append ?? ''
-                        }
-                    </InputGroup>
+                    {
+                        noLabel && message ? <InputGroupText className='cursor-pointer '>
+                            <Info size={500} id={`help-tooltip-message-${name}`} />
+                            <UncontrolledTooltip target={`help-tooltip-message-${name}`}>
+                                {message}
+                            </UncontrolledTooltip>
+                        </InputGroupText> : null}
+                    {
+                        append ?? ''
+                    }
+                </InputGroup>
+               
                     </>
                 }
 
