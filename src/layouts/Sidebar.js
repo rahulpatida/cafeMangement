@@ -12,7 +12,7 @@ const Sidebar = () => {
     let location = useLocation();
 
   return (
-    <div className="p-3 ">
+    <div className="p-3  fixed-top sidebarArea shadow">
       <div className="d-flex align-items-center">
         <Logo />
         <Button
@@ -27,7 +27,7 @@ const Sidebar = () => {
           {navigation.map((navi, index) => (
 
             <NavItem key={index} >
-              <h5 className="text-start">{navi.header}</h5>
+              <h6 className="text-start">{navi.header}</h6>
               <Link
                 to={navi.href}
                 className={
@@ -38,7 +38,7 @@ const Sidebar = () => {
               >
                 {/* <i className={navi.icon}></i> */}
                 <span >{navi.icon} </span>
-                <span className="ms-3 d-inline-block h5">{navi.title}</span>
+                <span className="ms-3 d-inline-block h6">{navi.title}</span>
               </Link>
             </NavItem>
           ))}

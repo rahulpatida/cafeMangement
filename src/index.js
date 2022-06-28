@@ -9,14 +9,19 @@ import Loader from "./layouts/loader/Loader";
 import { Provider } from "react-redux";
 import store from './redux/store'
 import { AbilityContext } from "./utility/context/Can";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 ReactDOM.render(
   <Provider store={store}>
     <AbilityContext.Provider value={AbilityContext}>
-      <Suspense fallback={<Loader />}>
+      <Suspense fallback={<Loader />}  >
+      
         <HashRouter>
           <App />
         </HashRouter>
+    
       </Suspense>
+      <ToastContainer newestOnTop limit={1} autoClose={5000} />
     </AbilityContext.Provider>
   </Provider>,
 
